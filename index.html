@@ -1,32 +1,248 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset=”utf-8”> 
-		<title>My first bootstrap project</title>
-		<link rel=”stylesheet” href=”css/bootstrap.css”  type=”text/css”/>
-	</head>
-	<body>
-	<!-- The Main wrapper div starts -->
-		<div class="container">
-			<!-- header content -->
-			<h1><a href="#">Bootstrap Site</a></h1>
-			<!-- Navigation -->
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="container">
-					  <ul class="nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Projects</a></li>
-						<li><a href="#">Services</a></li>
-						<li><a href="#">Downloads</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Contact</a></li>
-					  </ul>
-					</div>
-				</div>
-	        </div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-		<script src=”js/bootstrap.js”></script>
-	</body>
+    <title>Mikhail Naumov - Software Developer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/hover.zoom.js"></script>
+    <script src="assets/js/hover.zoom.conf.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Mikhail Naumov</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#about">About</a></li>
+			<li><a href="#projects">Projects</a></li>
+            <li><a href="assets/Resume_mnaumov.pdf">Resume</a></li>
+			<li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	<!-- +++++ Welcome Section +++++ -->
+	<div id="ww">
+	    <div id="about" class="container">
+			<div class="row mt">
+				<div class="col-lg-6 col-lg-offset-3 centered">
+					<h3>ABOUT ME</h3>
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="centered">					
+					<div class="col-lg-6">
+						<img src="assets/img/user.png" alt="Mikhail" style="max-width: 100%;">			
+					</div>
+					<div class="col-lg-6" style="text-align: left;">
+						<p>I am a freelance software developer living in Long Beach, California.</p>
+						<p>I recently graduated with a Master's Degree in computer science from <a href="http://www.csulb.edu/index.php">Cal State University Long Beach</a> (yay no more school!).</p>  
+						<p>I mostly work with game-related projects, however I am always open to more opportunities. Currently I am working as a freelance programmer on an indie game involving <a href="#omegatech">cats driving giant mechs</a>.</p>
+						<p>
+						Throughout my programming career I worked with a variety of languages and technologies. Fun things I did include: 
+							<ul>
+								<li>Game tools</li>
+								<li>Gameplay programming
+								<li>AI</li> 
+								<li>Networking</li>
+								<li>UI</li>
+								<li>Constraint programming</li>
+								<li>Big data</li>
+							</ul>
+						</p> 
+						<p>Feel free to check out my <a href="#projects">projects section</a>  below. If you need something programmed, please <a href="mailto://mikhail_naumov@yahoo.com"> contact</a> me.</p>
+					</div>
+				</div><!-- /col-lg-8 -->
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /ww -->
+	
+	
+	<div id="projects" class="container">
+		<div class="row mt">
+			<div class="col-lg-6 col-lg-offset-3 centered">
+				<h3>MY WORK</h3>
+				<hr>
+				<p>Check out some cool projects I was involved in.</p>
+			</div>
+		</div>
+		<div class="row mt">	
+			<div class="col-lg-5 col-lg-offset-1 centered">
+				<a class="zoom green" href="http://www.clubpenguin.com/"><img class="img-responsive centered-image" src="assets/img/portfolio/ClubPenguin/Club_Penguin_logo.png" alt="" /></a>
+			</div>
+			<div class="col-lg-5">
+				<h3>Club Penguin</h3>
+				<p>An MMO involving a virtual world for kids where players play as penguins who waddle around and participate in various games and activities.</p>
+				<p>I developed many game tools used by Club Penguin designers. I was also involved in porting the engine code to iOS platform.</p>
+				<p>Technoogies used: AS3/Stage3D, ObjectiveC, C++, OpenGL ES</p>				
+			</div>
+		</div><!-- /row -->
+		<div class="row">
+			<hr>
+		</div>
+		<div class="row mt">	
+			<div class="col-lg-5 col-lg-offset-1 centered">
+				<a class="zoom green" href="http://gamesalad.com/"><img class="img-responsive centered-image" src="assets/img/portfolio/GameSalad/gamesalad_logo.png" alt="" /></a>
+			</div>
+			<div class="col-lg-5">
+				<h3>GameSalad</h3>
+				<p>A tool for non-programmers to build simple HTML5 games in drag-and-drop fashion.</p>
+				<p>I assisted in porting from iOS to PC platform (Lots of UI work).</p>
+				<p>Technoogies used: WPF, C#</p>
+			</div>
+		</div><!-- /row -->
+		<div class="row">
+			<hr>
+		</div>
+		<div id="omegatech" class="row mt">	
+			<div class="col-lg-5 col-lg-offset-1 centered">
+				<a class="zoom green" href="http://www.omegatechgame.com/"><img class="img-responsive centered-image" src="assets/img/portfolio/OmegaTech/screen1.png" alt="" /></a>
+			</div>
+			<div class="col-lg-5">
+				<h3>OmegaTech Game (WIP)</h3>
+				<p>A top-down shooter involving cats driving giant mechs.</p>
+				<p>Currently helping remotely with implementation of AI stuff and code refactoring.</p>
+				<p>Technoogies used: Unity, C#, Behave 2, A* Pathfinding package.</p>
+			</div>
+		</div><!-- /row -->
+		<div class="row">
+			<hr>
+		</div>	
+		<div class="row mt">	
+			<div class="col-lg-5 col-lg-offset-1 centered">
+				<a class="zoom green" href="http://forum.unity3d.com/threads/multiplayer-pvp-tank-battles.165907/"><img class="img-responsive centered-image" src="assets/img/portfolio/TankGame/TankGame.png" alt="" /></a>
+			</div>
+			<div class="col-lg-5">
+				<h3>Unity multiplayer tank game (WIP)</h3>
+				<p>A new project I've been soldering on for awhile. It's a multiplayer game which includes fully configurable sci-fi/steampunk-ish tanks, fast paced PvP, and other cool stuff. Game is arena based persistent multiplayer, i.e. as you battle other people, you earn more credits to upgrade or buy new tanks (some people like to call this an "MMO" which is totally silly in my opinion).</p>
+				<p>
+				Besides being a really fun project, this game has been my Unity learning platform. Being the only person on the team, I have also learned a good deal about 3D modeling, texturing, and UI design. Sadly I only do this project in my free time, which I almost never have, so it is taking forever.
+				</p>
+				<p>Technoogies used: Unity, C#, Photon (written my own fully-authoritative server w/ server-side game engine), NGUI, Blender, Photoshop.</p>
+			</div>
+		</div><!-- /row -->
+		<div class="row">
+			<hr>
+		</div>
+		<div class="row mt">	
+			<div class="col-lg-5 col-lg-offset-1 centered">
+				<a class="zoom green" href="http://marketplace.xbox.com/en-US/Product/37-Days-to-Die/66acd000-77fe-1000-9115-d80258550b4b"><img class="img-responsive centered-image" src="assets/img/portfolio/37DTD/37Dtd.png" alt="" /></a>
+			</div>
+			<div class="col-lg-5">
+				<h3>37 Days To Die</h3>
+				<p>A top-down twin stick shooter for XBOX360. Developed using XNA by a team of 3 cool dudes. I was responsible for majority of programming, including AI, gameplay, fancy shaders, particle effects, boss behaviors, performance optimization, and leading by example! ;)</p>
+				<p>Technoogies used: C#, XNA, DirectX</p>
+			</div>
+		</div><!-- /row -->
+		<div class="row">
+			<hr>
+		</div>
+		<div class="row mt">	
+			<div class="col-lg-5 col-lg-offset-1 centered">
+				<a class="zoom green" href="http://marketplace.xbox.com/en-US/Product/GoonyCru-Day-One/66acd000-77fe-1000-9115-d80258550469"><img class="img-responsive centered-image" src="assets/img/portfolio/GoonyCru/GCDayOne.png" alt="" /></a>
+			</div>
+			<div class="col-lg-5">
+				<h3>GoonyCru: Day One</h3>
+				<p>A silly little game that involves customer service, grenades, and angry managers! 
+				I guess if you are stressed out about working in retail, then this is your thing. Propel customers with grenades around the screen, blow up angry managers, 
+				and feel like your IQ is dropping 10 points every minute you are playing this nonsense. ;)</p>
+				<p>
+				I did the programming, another bored out of his mind dude did the art and game design.
+				</p>
+				<p>Technoogies used: C#, XNA</p>
+			</div>
+		</div><!-- /row -->	
+	</div><!-- /container -->
+	
+	
+	<!-- +++++ Footer Section +++++ -->	
+	<div id="footer">
+		<div id="contact" class="container">
+			<div class="row centered">
+                    <div class="col-lg-3">
+                        <a href="mailto://mikhail_naumov@yahoo.com" target="blank">
+                            <img class="zoom2" src="assets/img/email.gif" style="width: 20%; height: 20%"></img>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <a href="https://github.com/chebz" target="blank">
+                            <img class="zoom2" src="assets/img/github.png" style="width: 25%; height: 25%"></img>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <a href="https://www.linkedin.com/pub/mikhail-naumov/36/8b7/118/" target="blank">
+                            <img class="zoom2" src="assets/img/linkedin.png" style="width: 20%; height: 20%"></img>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <a href="https://www.facebook.com/michael.naumov.3" target="blank">
+                            <img class="zoom2" src="assets/img/fb.png" style="width: 17%; height: 17%"></img>
+                        </a>
+                    </div>
+
+			</div><!-- /row centered -->
+		
+		</div><!-- contact -->
+
+	</div><!-- footer -->
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Smooth scrolling snippet -->
+    <script>
+        $(function() {
+          $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+              if (target.length) {
+                $('html,body').animate({
+                  scrollTop: target.offset().top
+                }, 1000);
+                return false;
+              }
+            }
+          });
+        });
+    </script>
+  </body>
 </html>
