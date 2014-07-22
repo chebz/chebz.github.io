@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <memory>
+#include <assert.h>
 
 #pragma once
 
@@ -16,14 +17,14 @@ public:
 	LinkedListIterator(TNode* p) : p(p) {}
 	LinkedListIterator(const LinkedListIterator& other) : p(other.p) {}
 	LinkedListIterator& operator=(LinkedListIterator other) { std::swap(p, other.p); return *this; }
-	void operator++() { p = p->next; }
-	void operator++(int) { p = p->next; }
+	LinkedListIterator&  operator++() { p = p->next; return *this; }
+	LinkedListIterator&  operator++(int) { p = p->next; return *this; }
 	bool operator==(const LinkedListIterator& other) { return p == other.p; }
 	bool operator!=(const LinkedListIterator& other) { return !(p == other.p); }
 	const T& operator*() const { return p->data; }
-	LinkedListIterator<TNode> operator+(int i)
+	LinkedListIterator& operator+(int i)
 	{
-		LinkedListIterator<TNode> iter = *this;
+		LinkedListIterator iter = *this;
 		while (i-- > 0 && iter.p)
 		{
 			++iter;
@@ -33,46 +34,38 @@ public:
 };
 
 template <typename T>
-class Node
-{
-	friend class LinkedList<T>;
-	friend class LinkedListIterator<Node<T>>;
-	friend class LinkedListIterator<const Node<T>>;
-
-	Node() : next(nullptr) {}
-	Node(const T &data) : data(data), next(nullptr) {}
-	Node<T> *next;
-	T data;
-public:
-	typedef T value_type;
-};
-
-template <typename T>
 class LinkedList
 {
-	typedef Node<T> node;
+	struct Node
+	{
+		Node() : next(nullptr) {}
+		Node(const T &data) : data(data), next(nullptr) {}
+		Node *next;
+		T data;
+	public:
+		typedef T value_type;
+	};
+
+	friend class LinkedListIterator<Node>;
+	friend class LinkedListIterator<const Node>;
 
 	std::size_t size;
-	node *head;
-	node *tail;
-
-	void init()
-	{
-		size = 0;
-		head = new node;
-		tail = new node;
-		head->next = tail;
-	}
+	Node *head;
+	Node *tail;
 
 public:
-	typedef LinkedListIterator<node> iterator;
-	typedef LinkedListIterator<const node> const_iterator;
+	typedef LinkedListIterator<Node> iterator;
+	typedef LinkedListIterator<const Node> const_iterator;
 
-	LinkedList() { init(); }
+	LinkedList() : size(0), head(new Node), tail(new Node)
+	{ 
+		head->next = tail; 
+	}
 
-	LinkedList(const LinkedList& other)
+	LinkedList(const LinkedList& other) : size(0), head(new Node), tail(new Node)
 	{
-		init();
+		head->next = tail;
+
 		const_iterator i = other.begin();
 		while (i != other.end())
 		{
@@ -125,7 +118,7 @@ public:
 
 	void add(const T &value)
 	{
-		node *first = new node(value);
+		Node *first = new Node(value);
 		first->next = head->next;
 		head->next = first;
 		size++;
@@ -133,7 +126,7 @@ public:
 
 	void remove(iterator& removeIter)
 	{
-		node *last = head;
+		Node *last = head;
 		iterator i = begin();
 
 		while (i != removeIter)
