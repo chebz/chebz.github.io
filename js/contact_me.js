@@ -81,7 +81,8 @@ $(function() {
                 },
 				
 				error: function(xhr,textStatus,err) {
-					alert("readyState: " + xhr.readyState + "\n" +
+					alert("t1:\n" +
+						  "readyState: " + xhr.readyState + "\n" +
 						  "responseText: " + xhr.responseText + "\n" +
 						  "status: " + xhr.status + "\n" +
 					      "text status: " + textStatus + "\n" +
