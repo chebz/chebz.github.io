@@ -1,0 +1,152 @@
+
+
+.gameitem
+{
+    position: relative;
+    vertical-align: top;
+    margin-left: 15px;
+    margin-right: 15px;
+    z-index: 1;
+}
+
+@media (min-width:480px)
+{
+    .gameItemLarge
+    {
+        display: inline-block;
+        width: 45%;
+    }
+}
+
+@media (max-width:479px)
+{
+    .gameItemSmall
+    {
+        width: 100%;
+    }
+}
+
+.section
+{
+    border: 25px transparent;
+    padding: 15px;
+    border-image: url('../img/button.png');
+    border-image-slice: 49% fill;
+    border-image-repeat: stretch;
+}
+
+.gameRow:hover
+{
+    opacity: 0.99;
+    border: transparent;
+    border-image: url('../img/boxFilled.png');
+    border-image-slice: 40% fill;
+    border-image-repeat: stretch;
+    z-index: 0;
+}
+
+.gameRow
+{
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.gameRowPosition
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.headerAlamoLuna
+{
+    background-image: url('../img/topImageTG.png');
+}
+
+.headerIndex
+{
+    background-image: url('../img/topImage.png');
+}
+
+.unclikable
+{
+    pointer-events: none;
+}
+
+.rowSpacing
+{
+    margin-bottom: 50px;
+}
+
+.googlePlay
+{
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.stretchToParent
+{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.headerTankGame
+{
+    background-image: url('../img/topImageTG.png');
+}
+
+.photo_enlarge_box
+{
+    margin-top: 5px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.backgroundBox
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    border-image: url('../img/boxFilled.png');
+    border-image-slice: 40% fill;
+    border-image-repeat: stretch;
+}
+
+@media (min-width:480px)
+{
+    .gameItemLargeHalf
+    {
+        display: inline-block;
+        width: 25%;
+    }
+}
+
+@media (max-width:479px)
+{
+    .gameItemSmallHalf
+    {
+        width: 50%;
+    }
+}
+
+.gameitemHalf
+{
+    position: relative;
+    vertical-align: top;
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    z-index: 1;
+}
+

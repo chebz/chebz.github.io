@@ -1,0 +1,17 @@
+
+
+@media (max-width:1199px)
+{
+    gameItem
+    {
+        display: inline-block;
+    }
+}
+
+.gameitem
+{
+    width: 50%;
+    display: inline-block;
+}
+
+

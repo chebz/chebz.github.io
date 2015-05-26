@@ -1,0 +1,45 @@
+
+
+.gameitem
+{
+    vertical-align: top;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+@media (min-width:480px)
+{
+    .gameItemLarge
+    {
+        display: inline-block;
+        width: 45%;
+    }
+}
+
+@media (max-width:479px)
+{
+    .gameItemSmall
+    {
+        width: 100%;
+    }
+}
+
+.section
+{
+    border: 25px transparent;
+    padding: 15px;
+    border-image: url('../img/button.png');
+    border-image-slice: 49% fill;
+    border-image-repeat: stretch;
+}
+
+.gameRow:hover:after
+{
+    border: 25px transparent;
+    padding: 15px;
+    border-image: url('../img/boxFilled.png');
+    border-image-slice: 40% fill;
+    border-image-repeat: stretch;
+}
+
+
