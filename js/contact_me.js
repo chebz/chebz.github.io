@@ -39,7 +39,7 @@ $(function() {
 			
 			
             $.ajax({
-                url: './mail/contact_me123.php',
+                url: '././mail/contact_me1.php',
                 type: "POST",
                 data: {
                     name: name,
