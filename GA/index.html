@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <!--
+  Copyright (c) 2013 The Chromium Authors. All rights reserved.
+  Use of this source code is governed by a BSD-style license that can be
+  found in the LICENSE file.
+  -->
+<head>
+
+  <title>Simple Genetic Algorithm</title>
+
+  <script type="text/javascript">
+    SimpleGAModule = null;  // Global application object.
+    statusText = 'NO-STATUS';
+	
+	var noAction = 0;
+	var executeAction = 1;
+
+    // Indicate load success.
+    function moduleDidLoad() {
+      SimpleGAModule = document.getElementById('SimpleGA');
+      updateStatus('Ready');	  
+    }
+	
+	function executeGA() {
+		var initialPopulation = Number(document.getElementsByName("initialPopulation")[0].value);
+		var mutationRate = Number(document.getElementsByName("mutationRate")[0].value);
+		var goal = Number(document.getElementsByName("goal")[0].value);
+		var maxGenerations = Number(document.getElementsByName("maxGenerations")[0].value);
+		var crossoverRate = Number(document.getElementsByName("crossoverRate")[0].value);		
+		
+		var dictionary = {
+			action: 1,
+			initialPopulation: initialPopulation,
+			mutationRate: mutationRate,
+			goal: goal,
+			maxGenerations: maxGenerations,
+			crossoverRate: crossoverRate
+		}
+		
+		SimpleGAModule.postMessage(dictionary);
+		
+	}
+
+    // The 'message' event handler.  This handler is fired when the NaCl module
+    // posts a message to the browser by calling PPB_Messaging.PostMessage()
+    // (in C) or pp::Instance.PostMessage() (in C++).  This implementation
+    // simply displays the content of the message in an alert panel.
+    function handleMessage(message_event) {
+		var status = "";
+		switch(message_event.data.action) {
+			case noAction:
+				status = message_event.data.status;
+				break;			
+			case executeAction:
+				status = "InitialPopulation: " + String(message_event.data.initialPopulation) + "</br>" + 
+					"MutationRate: " + String(message_event.data.mutationRate) + "</br>" +
+					"Goal: " + String(message_event.data.goal) + "</br>" +
+					"MaxGenerations: " + String(message_event.data.maxGenerations) + "</br>" +
+					"CrossoverRate: " + String(message_event.data.crossoverRate) + "</br>" +
+					"Top Results:</br>";
+					
+				var results = message_event.data.results;
+				var arrayLength = results.length;
+				for (var i = 0; i < arrayLength; i++) {
+					status += String(results[i]) + "</br>";
+				}
+				break;
+		}
+      
+		updateStatus(status);
+    }
+
+    // If the page loads before the Native Client module loads, then set the
+    // status message indicating that the module is still loading.  Otherwise,
+    // do not change the status message.
+    function pageDidLoad() {
+      if (SimpleGAModule == null) {
+        updateStatus('LOADING...');
+      } else {
+        // It's possible that the Native Client module onload event fired
+        // before the page's onload event.  In this case, the status message
+        // will reflect 'SUCCESS', but won't be displayed.  This call will
+        // display the current message.
+        updateStatus();
+      }
+    }
+
+    // Set the global status message.  If the element with id 'statusField'
+    // exists, then set its HTML to the status message as well.
+    // opt_message The message test.  If this is null or undefined, then
+    // attempt to set the element with id 'statusField' to the value of
+    // |statusText|.
+    function updateStatus(opt_message) {
+      if (opt_message)
+        statusText = opt_message;
+      var statusField = document.getElementById('statusField');
+      if (statusField) {
+        statusField.innerHTML = statusText;
+      }
+    }
+  </script>
+</head>
+<body onload="pageDidLoad()">
+
+  <h1>Simple Genetic Algorithm</h1>
+  <p>
+  The goal of the problem is to find an equation composed of numbers 0-9 and operators '+-*/' that would produce the goal number.</br>
+  This is my naive implementation of <a href="http://www.ai-junkie.com/ga/intro/gat1.html">THIS</a> tutorial (read it for details).</br>
+  You can get the source <a href="https://github.com/chebz/GeneticAlgorithms1">HERE</a>.</br></br>
+  Note: for the sake of simplicity, calculation only works with integers rounding down. So 7/3 = 2 and 5/4 = 0.
+  </p>
+  <p>
+    <!--
+    Load the published pexe.
+    Note: Since this module does not use any real-estate in the browser, its
+    width and height are set to 0.
+
+    Note: The <embed> element is wrapped inside a <div>, which has both a 'load'
+    and a 'message' event listener attached.  This wrapping method is used
+    instead of attaching the event listeners directly to the <embed> element to
+    ensure that the listeners are active before the NaCl module 'load' event
+    fires.  This also allows you to use PPB_Messaging.PostMessage() (in C) or
+    pp::Instance.PostMessage() (in C++) from within the initialization code in
+    your module.
+    -->
+    <div id="listener">
+      <script type="text/javascript">
+        var listener = document.getElementById('listener');
+        listener.addEventListener('load', moduleDidLoad, true);
+        listener.addEventListener('message', handleMessage, true);
+      </script>
+
+      <embed id="SimpleGA"
+             width=0 height=0
+             src="SimpleGA.nmf"
+             type="application/x-pnacl" />
+    </div>
+  </p>
+  
+	<form action="javascript:executeGA();">
+		InitialPopulation: 	<input type="number" name="initialPopulation" value="100" min="10" max="1000000"> (How many chromosomes to start with.)<br>
+		MutationRate: 		<input type="number" name="mutationRate" value="0.01" min="0.0" max="1.0" step="0.001"> (What is a chance % that a gene will mutate when chromosomes are crossed)<br>
+		Goal: 				<input type="number" name="goal" value="10" min="0"> (The sought goal result)<br>
+		MaxGenerations:		<input type="number" name="maxGenerations" value="1000" min="1" max="1000000"> (Maximum generations before algorithm stops. More generations takes longer to calculate but produces more solutions that are closer to target goal)<br>
+		CrossoverRate:		<input type="number" name="crossoverRate" value="0.7" min="0.0" max="1.0" step="0.001"> (% chance that with next generations 2 chromosomes will cross)<br>
+		<input type="submit" value="Execute">
+	</form>
+
+  <h2>Status </br><code id="statusField">NO-STATUS</br></code></h2>
+</body>
+</html>

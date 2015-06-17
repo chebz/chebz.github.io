@@ -41,15 +41,15 @@ export CYGWIN
 
 
 # Declare the ALL target first, to make the 'all' target the default build
-all: hello_tutorial.pexe
+all: SimpleGA.pexe
 
 clean:
-	$(RM) hello_tutorial.pexe hello_tutorial.bc
+	$(RM) SimpleGA.pexe SimpleGA.bc
 
-hello_tutorial.bc: hello_tutorial.cc
+SimpleGA.bc: SimpleGA.cc
 	$(PNACL_CXX) -o $@ $< -O2 $(CXXFLAGS) $(LDFLAGS)
 
-hello_tutorial.pexe: hello_tutorial.bc
+SimpleGA.pexe: SimpleGA.bc
 	$(PNACL_FINALIZE) -o $@ $<
 
 
