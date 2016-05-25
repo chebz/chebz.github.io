@@ -105,6 +105,11 @@
     background-image: url('../img/topImageTG.png');
 }
 
+.headerAlphaCentauri
+{
+    background-image: url('../img/topImageAC.png');
+}
+
 .photo_enlarge_box
 {
     margin-top: 5px;
